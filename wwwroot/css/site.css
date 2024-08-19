@@ -1,0 +1,444 @@
+html, body {
+    background-color: peachpuff;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+        
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+WellcomeText {
+    margin: 20px;
+}
+
+
+
+/*/* Mina CSS */
+
+
+.my-image {
+    margin-left: -20px;
+}
+
+.box1 {
+    display: flex;
+    justify-content: flex-start; /* Flyttar innehållet (bilden) till vänster */
+    align-items: center; /* Centrerar bilden vertikalt inom box1 */
+}
+
+
+
+
+
+.container {
+    display: flex;
+}
+
+.box1, .box2 {
+    flex: 1; /* Detta gör att båda divarna tar lika mycket plats */
+    padding: 30px;
+}
+
+
+
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-title {
+    background-color: burlywood;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    width: 400px;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+}
+
+.category-title a {
+    text-decoration: none;
+}
+
+.category-title:hover {
+    background-color: #EAD3D3;
+}
+
+
+.category-title a:hover {
+    color: #455a64;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, a {
+    color: #654321;
+}
+
+
+.subcategory-dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0; /* Marginal för att flytta ned dropdown */
+    display: none; /* Dölj subkategorier tills musen är över kategorin */
+    position: absolute; /* Placera dropdown relativt till kategorititeln */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff8dc; /* Ljusa bakgrunden för subkategorier */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Lägg till lite skugga */
+    z-index: 1; /* Se till att den visas över andra element */
+}
+
+.category-title:hover .subcategory-dropdown {
+    display: block; /* Visa subkategorierna när man hovrar över kategorin */
+}
+
+.subcategory-dropdown li {
+    padding: 8px 0;
+    text-align: center;
+}
+
+    .subcategory-dropdown li a {
+        color: #654321;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .subcategory-dropdown li a:hover {
+            color: #455a64;
+        }
+
+.no-subcategories {
+    font-style: italic;
+    color: #777;
+}
+
+.red-text{
+    color:red;
+}
+
+
+.form-control{
+
+}
+
+
+
+
+/* CSS som bara gäller för SubcategoryPosts-sidan */
+.subcategory-posts-page {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+}
+
+    .subcategory-posts-page h2, .subcategory-posts-page h3 {
+        color: #333;
+    }
+
+    .subcategory-posts-page form {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .subcategory-posts-page form div {
+            margin-bottom: 10px;
+        }
+
+    .subcategory-posts-page label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #555;
+    }
+
+    .subcategory-posts-page input[type="text"],
+    .subcategory-posts-page textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    .subcategory-posts-page textarea {
+        resize: vertical;
+        height: 150px;
+    }
+
+    .subcategory-posts-page button[type="submit"] {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        .subcategory-posts-page button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+    .subcategory-posts-page ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .subcategory-posts-page ul li {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+            .subcategory-posts-page ul li a {
+                text-decoration: none;
+                font-size: 18px;
+                color: #007bff;
+                font-weight: bold;
+            }
+
+                .subcategory-posts-page ul li a:hover {
+                    text-decoration: underline;
+                }
+
+            .subcategory-posts-page ul li p {
+                margin-top: 10px;
+                font-size: 16px;
+                color: #555;
+            }
+
+    .subcategory-posts-page p {
+        font-size: 18px;
+        color: #888;
+        text-align: center;
+    }
+    .all-posts-section .profile-image {
+        width: 40px; /* Justera bredden på bilden */
+        height: 40px; /* Justera höjden på bilden */
+        max-width: 100%; /* Gör så att bilden inte blir större än dess innehåll */
+        max-height: 100%; /* Säkerställ att höjden inte överstiger innehållets höjd */
+        border-radius: 0%; /* Gör bilden rund */
+       /* object-fit: cover;*/ /* Anpassa bilden inom sin container */
+        margin-right: 10px; /* Marginal till höger om bilden */
+    }
+
+
+
+/*
+.post-container {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+*/
+.post-sidebar {
+    flex: 0 0 150px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    font-weight: bold;
+    color: #333;
+}
+
+.post-content {
+    flex: 1;
+    
+}
+
+    .post-content h3 {
+        margin-top: 0;
+        color: #007bff;
+    }
+
+    .post-content p {
+        margin: 10px 0;
+        color: #555;
+    }
+
+.post-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.post-content {
+    position: relative; /* Gör att knapparna kan positioneras inom föräldraelementet */
+    padding-bottom: 50px; /* Skapa utrymme längst ner för knapparna */
+}
+.post-buttons {
+    display: flex; /* Gör att knapparna visas i rad */
+    justify-content: flex-end; /* Flyttar knapparna till höger */
+    position: absolute; /* Gör att knapparna kan placeras längst ner */
+    bottom: 0; /* Placera knapparna längst ner */
+    right: 0; /* Placera knapparna längst till höger */
+    gap: 10px; /* Skapa utrymme mellan knapparna */
+}
+
+   
+
+
+
+  .post-buttons button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 15px;
+    }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        button:first-of-type {
+            background-color: #5aae70;
+        }
+
+        button:last-of-type {
+            background-color: #f6a09c;
+        }
+
+
+
+.comment-form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-item {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.comment-sidebar {
+    flex: 0 0 100px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+
+
+
+    /*nya*/
+
+.post-container {
+    display: flex;
+    margin-bottom: 15px;
+    border: 5px solid #ccc;
+}
+
+
+
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 165px;
+    height: 240px;
+    border: 4px solid #ccc;
+    margin-right: 0px;
+}
+
+    .user-info img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-info p {
+        margin: 1px 0;
+    }
+
+.post-content {
+    flex-grow: 1;
+    padding: 20px;
+    border: 2px solid #ccc;
+}
+
+.user-comment-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 130px;
+    height: 196px;
+    padding: 0px;
+    border: 2px solid #ccc;
+    margin-right: 0px;
+}
+
+    .user-comment-info img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .user-comment-info p {
+        margin: 0px 0;
+        font-size: 15px;
+    }

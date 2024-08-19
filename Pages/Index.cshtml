@@ -1,0 +1,103 @@
+﻿@page
+@model IndexModel
+@* @inject SignInManager<IdentityUser> SignInManager *@
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+
+    <div class="box1">
+        <img src="~/img/Books1.jpeg" alt="My Image" width="700" class="my-image"/>
+
+    </div>
+
+    <div class="box2">
+        @if(Model.MyUser != null)
+        {
+            <h1 class="display-4">Välkommen till LitLounge, <br/>@Model.MyUser.NickName !</h1>
+            <br />
+        }
+        else
+        {
+            <h1 class="display-4">Välkommen till LitLounge!</h1>
+        }
+       
+    <br />
+    <br /> <br />
+    <div class="align-content-center">
+
+        <p>
+            Hej och välkommen till LitLounge, din digitala oas för bokälskare! Här kan du dyka in i inspirerande diskussioner om dina favoritböcker,
+            upptäcka nya litterära pärlor och dela dina läsupplevelser med likasinnade.
+
+            <br />
+
+
+            Tack för att du är här. Låt oss göra LitLounge till den bästa platsen för bokdiskussioner tillsammans!
+            <br /> <br />
+            Med vänliga hälsningar,
+            LitLounge Team
+        </p>
+        
+    </div>
+    <br /> <br />
+
+
+       @*  <div class="category-container">
+
+            @foreach (var category in Model.Categories)
+            {
+                <div class="category-title">
+                    <a href="categoryId=@category.Id">@category.Name</a>
+                </div>
+
+           
+            }
+        </div> *@ 
+
+        <div class="category-container">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="category-title">
+                    <a href="#" class="category-link">@category.Name</a>
+
+                    <!-- Subcategories Dropdown -->
+                    <div class="subcategory-dropdown" style="display:none;">
+                        <ul>
+                            @foreach (var subcategory in category.Subcategories)
+                            {
+                                @* <li>
+                                    <a href="subcategoryId=@subcategory.Id">@subcategory.Name</a>
+                                </li> *@
+                                <li>
+                                   <a href="/Blog/SubcategoryPosts/@subcategory.Id">@subcategory.Name</a>
+                                </li>
+
+                            }
+                            @if (!category.Subcategories.Any())
+                            {
+                                <li class="no-subcategories red-text">Inga underkategorier</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <script>
+            document.querySelectorAll('.category-link').forEach(function (categoryLink) {
+                categoryLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var dropdown = this.nextElementSibling;
+                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        </script>
+       
+ 
+
+    </div>
+
+   
+</div>

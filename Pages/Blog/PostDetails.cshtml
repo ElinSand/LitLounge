@@ -1,0 +1,140 @@
+﻿@page "{postId:int}"
+@model LitLounge.Pages.Blog.PostDetailsModel
+@using System.Security.Claims
+@{
+}
+
+
+
+<h3>Inlägg</h3>
+
+
+<br/><br/>
+
+<br/><br/>
+
+
+
+@if (Model.Post != null)
+{
+    
+
+            <div class="post-container">
+                <div class="user-info">
+
+                <!-- Profilbild och användarinformation -->
+                    
+                        @if (!string.IsNullOrEmpty(Model.Post.User.ProfileImagePath))
+                        {
+                            <img src="@Model.Post.User.ProfileImagePath" alt="Profilbild" class="profile-image" />
+                        }
+                            <p><strong> @Model.Post.User.NickName</strong></p>
+                            <p>@Model.Post.DateCreated</p>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-page="/Message/Create" asp-route-ReceiverId="@Model.Post.UserId" class="btn btn-slate">Skicka<br />ett PM</a>
+                            }
+            
+                </div>   
+
+                    <!-- Inläggscontent -->
+                    <div class="post-content">
+                        <h3 class="post-title">@Model.Post.Title</h3>
+                        <p>@Model.Post.Content</p>
+
+                        <div class="post-buttons">
+                            <button onclick="location.href='@Url.Page("/Blog/PostDetails", new { postId = Model.Post.Id, action = "like" })'">Gilla (@Model.Post.LikeCount)</button>
+                           @*  <button onclick="location.href='@Url.Page("/Blog/PostDetails", new { postId = Model.Post.Id, action = "report" })'">Rapportera (@Model.Post.ReportCount)</button> *@
+                            
+                        </div>
+
+
+                     </div>
+                     
+                                          
+            </div>
+
+    <br />
+    <br />
+
+
+    <h3>Kommentarer</h3>
+
+    <!-- Kommentarformulär -->
+    @if (Model.Post.Comments != null && Model.Post.Comments.Count > 0)
+    {
+        @foreach (var comment in Model.Post.Comments)
+        {
+            <div class="post-container">
+                <div class="user-comment-info">
+
+                    @if (!string.IsNullOrEmpty(comment.User.ProfileImagePath))
+                    {
+                        <img src="@comment.User.ProfileImagePath" alt="Profilbild" class="profile-image" />
+                    }
+                    <p><strong> @comment.User?.NickName</strong></p>
+                    <p><small>@comment.DateCreated</small></p>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-page="/Message/Create" asp-route-ReceiverId="@comment.UserId" class="btn btn-slate">Skicka<br />ett PM</a>
+                    }
+
+                 </div>
+
+
+                <div class="post-content">
+                    <p>@comment.Content </p>
+                </div>
+
+                @if (comment.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    <form method="post" asp-page-handler="DeleteComment" asp-route-commentId="@comment.Id" onsubmit="return confirm('Är du säker på att du vill ta bort denna kommentar?');" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Ta bort</button>
+                    </form>
+                }
+
+             </div>
+        }
+
+    }        
+    else
+    {
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <p>Logga in för att kommentera!</p>
+        }
+        else
+        {
+            <p>Det finns inga kommenterar här.</p>
+        }
+    }
+
+            <br />
+            <br />
+
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div>
+            <h6>Ny kommentar</h6>
+            <form method="post">
+                <div>
+                    <label for="CommentContent"></label>
+                    <textarea name="CommentContent" rows="5" cols="35" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Skicka!</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p>Logga in för att kommentera!</p>
+
+    }
+
+
+
+}

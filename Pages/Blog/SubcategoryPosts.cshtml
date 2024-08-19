@@ -1,0 +1,92 @@
+﻿@page "{subcategoryId:int}"
+@model LitLounge.Pages.Blog.SubcategoryPostsModel
+@* @using Microsoft.AspNetCore.Identity
+@using LitLounge.Areas.Identity.Data
+@inject SignInManager<LitLoungeUser> SignInManager
+@inject UserManager<LitLoungeUser> UserManager *@
+@{
+}
+
+
+<h2>Inlägg för @Model.Subcategory.Name</h2>
+
+
+
+
+<div class="all-posts-section">
+
+    @if (Model.Posts != null)
+    {
+        <ul>
+            @foreach (var post in Model.Posts)
+            {
+@* 
+                <li>
+                    <div class="post-header">
+                        <img src="@post.User.ProfileImagePath" alt="User Profile Image" class="profile-image" />
+                        <span class="user-nickname">@post.User.NickName</span>
+                        <br/>
+                        <p3>@post.DateCreated</p3>
+                        <a href="/Blog/PostDetails/@post.Id">@post.Title</a>
+                    </div>
+                    <p>@post.Content</p>
+                </li> *@
+
+
+
+                <li>
+                    <a href="/Blog/PostDetails/@post.Id"> <strong>@post.Title</strong></a>
+                    <p>@post.Content</p>
+                    <p>@post.DateCreated</p>
+                    <p>Skriven av:<strong> @post.User.NickName</strong></p>
+                    
+                
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Här var det tomt!</p>
+    }
+
+</div>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+
+    <div class="subcategory-posts-page">
+
+
+        <form method="post">
+            <div>
+                <label for="Title">Titel:</label>
+                <input type="text" id="Title" name="Title" required />
+            </div>
+            <div>
+                <label for="Content">Innehåll:</label>
+                <textarea id="Content" name="Content" required></textarea>
+            </div>
+            <button type="submit">Skapa inlägg</button>
+        </form>
+
+    </div>
+}
+else
+{
+    <p>Logga in för att skapa inlägg</p>
+}
+
+@* 
+<h3>Tidigare inlägg</h3>
+<ul>
+    @foreach (var post in Model.Posts)
+    {
+        <li>
+            <strong>@post.Title</strong> - @post.DateCreated
+            <p>@post.Content</p>
+            <a href="/Blog/PostDetails/@post.Id">Se hela inlägget</a>
+        </li>
+    }
+</ul> *@

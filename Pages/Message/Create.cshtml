@@ -1,0 +1,16 @@
+﻿@page
+@model LitLounge.Pages.Message.CreateModel
+@{
+    ViewData["Title"] = "Skicka ett meddelande";
+}
+
+
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="MessageContent"><h5>Skicka ett meddelande</h5></label>
+        <textarea asp-for="MessageContent" class="form-control" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-slate">Skicka</button>
+</form>

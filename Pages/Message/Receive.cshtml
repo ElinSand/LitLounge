@@ -1,0 +1,84 @@
+﻿@page
+@model LitLounge.Pages.Message.ReceiveModel
+@{
+    ViewData["Title"] = "Receive";
+}
+
+
+
+
+@* @* 
+<h2>Inkorg</h2>
+
+<br />
+@if (Model.ReceivedMessages != null && Model.ReceivedMessages.Count > 0)
+{
+    <ul class="list-group">
+        @foreach (var message in Model.ReceivedMessages)
+        {
+            <li class="list-group-item">
+                <strong>Från: @message.AuthorNickname</strong>
+                
+                <p>@message.MessageContent</p>
+                <small>Skickades: @message.SentAt</small>
+            </li>
+            <br/>
+        }
+    </ul>
+}
+else
+{
+   <p>Din inkorg är tom!</p>
+} *@ 
+
+
+
+
+
+<div class="row">
+    <!-- Mottagna meddelanden -->
+    <div class="col-md-6" >
+        <h2>Inkorg</h2>
+        @if (Model.ReceivedMessages != null && Model.ReceivedMessages.Count > 0)
+        {
+            <ul class="list-group">
+                @foreach (var message in Model.ReceivedMessages)
+                {
+                    <li class="list-group-item">
+                        <strong>Från: @message.AuthorNickname</strong>
+                        <p>@message.MessageContent</p>
+                        <small>Skickades: @message.SentAt</small>
+                    </li>
+                    <br />
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Din inkorg är tom!</p>
+        }
+    </div>
+
+    <!-- Skickade meddelanden -->
+    <div class="col-md-6" >
+        <h2>Skickade</h2>
+        @if (Model.SentMessages != null && Model.SentMessages.Count > 0)
+        {
+            <ul class="list-group">
+                @foreach (var message in Model.SentMessages)
+                {
+                    <li class="list-group-item">
+                        <strong>Till: @message.AuthorNickname</strong>
+                        <p>@message.MessageContent</p>
+                        <small>Skickades: @message.SentAt</small>
+                    </li>
+                    <br />
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Du har inte skickat några meddelanden ännu.</p>
+        }
+    </div>
+</div>

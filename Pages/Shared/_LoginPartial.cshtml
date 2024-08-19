@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LitLounge.Areas.Identity.Data
+
+@inject SignInManager<LitLoungeUser> SignInManager
+@inject UserManager<LitLoungeUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    var nickname = user?.NickName ?? "User";
+    
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Message/Receive">Meddelanden</a>
+    </li>
+
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            <img src="@user?.ProfileImagePath" alt="Profile Picture" style="max-width: 40px; max-height: 40px;" /> 
+            Hej @nickname!    @* @UserManager.GetUserName(User)! *@
+        </a>
+    </li>
+    <li class="nav-item">
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logga ut</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">Registrera dig</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Logga in</a>
+    </li>
+}
+</ul>

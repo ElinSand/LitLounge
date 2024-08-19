@@ -1,0 +1,25 @@
+﻿@page
+@model LitLounge.Pages.Admin.UserAdmin.GetUsersAPIModel
+@{
+}
+<h1>Ny Sida </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nickname</th>
+            <th>Email</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.NickName</td>
+                <td>@user.Email</td>
+                <td>@user.Id</td>
+            </tr>
+        }
+    </tbody>
+</table>
