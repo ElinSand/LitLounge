@@ -1,4 +1,4 @@
-﻿namespace LitLounge.Models
+﻿namespace LitLounge.Models                ANVÄNDS INTE!!! Glömde ta bort!
 {
     public class Blog
     {
