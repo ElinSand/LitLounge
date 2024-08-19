@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
+using System.Security.Claims;                 DEN HÄR SIDAN ANVÄNDS INTE!!!
 
 namespace LitLounge.Pages
 {
